@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Барбершоп «Борода» в Москве — стрижка и борода</title>
+  <meta name="description" content="Барбершоп «Борода» в Москве: мужская и детская стрижка, оформление бороды, королевское бритьё. Работаем по записи, без очередей.">
+  <style>
+    :root {
+      --bg: #e6e8ec;
+      --bg-soft: #f1f2f4;
+      --bg-card: #eef0f3;
+      --navy: #152238;
+      --navy-deep: #0d1b2a;
+      --navy-mid: #1d3352;
+      --gray-dark: #3a4048;
+      --gray: #6b717a;
+      --text: #111318;
+      --line: rgba(17, 19, 24, 0.1);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 52px;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--navy-mid);
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 3px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(21, 34, 56, 0.35);
+    }
+
+    .btn-ghost:hover { background: rgba(21, 34, 56, 0.06); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(230, 232, 236, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+      padding-block: 0.7rem;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo strong {
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .logo span {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    .header-inner .btn {
+      min-height: 46px;
+      padding-inline: 1.1rem;
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .hero { padding: 3.5rem 0 4rem; }
+
+    .hero-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .eyebrow {
+      color: var(--navy);
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 8vw, 4.4rem);
+      line-height: 1.08;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      max-width: 12ch;
+      margin-bottom: 1.1rem;
+      color: #111;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: var(--text);
+      max-width: 28ch;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 280px;
+      background: #cfd3d8;
+      border: 1px solid var(--line);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+
+    section { padding: 4rem 0; }
+
+    .section-head { margin-bottom: 2rem; }
+
+    h2 {
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .muted {
+      color: var(--gray);
+      margin-top: 0.7rem;
+      max-width: 42ch;
+    }
+
+    .services {
+      background: var(--navy-deep);
+      color: #eef1f5;
+    }
+
+    .services .eyebrow { color: #9eb0c8; }
+    .services .muted { color: #b7c2d0; }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: #e6e8ec;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.15rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 210px;
+    }
+
+    .card-visual {
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      margin-bottom: 1.05rem;
+      overflow: hidden;
+      background: #d4d4d4;
+    }
+
+    .card-visual svg,
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.45rem;
+      color: #111;
+    }
+
+    .card p {
+      color: var(--gray-dark);
+      font-size: 0.98rem;
+      flex: 1;
+    }
+
+    .price {
+      margin-top: 1.1rem;
+      color: var(--navy);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .about-grid,
+    .contacts-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .about p,
+    .contacts p {
+      color: var(--text-soft, #2c3138);
+      font-size: 1.08rem;
+      max-width: 46ch;
+    }
+
+    .facts {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .facts li {
+      padding: 0.9rem 1rem;
+      background: var(--bg-soft);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .reviews { background: #d9dce1; }
+
+    .quotes {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .quote {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.3rem;
+    }
+
+    .quote p {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-style: normal;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .contact-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.3rem;
+    }
+
+    .contact-card dt {
+      color: var(--navy);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .contact-card dd {
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-card dd:last-of-type { margin-bottom: 1.4rem; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.6rem 0 2rem;
+      color: var(--gray);
+      font-size: 0.92rem;
+      background: var(--bg);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .wrap { width: min(100% - 3rem, var(--max)); }
+
+      .hero { padding: 5.5rem 0 6rem; }
+
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: stretch;
+        gap: 3rem;
+      }
+
+      .photo,
+      .photo img { min-height: 420px; height: 100%; }
+
+      .cards { grid-template-columns: repeat(2, 1fr); }
+
+      .about-grid,
+      .contacts-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+        gap: 2.5rem;
+      }
+
+      .quotes { grid-template-columns: repeat(3, 1fr); }
+
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      section { padding: 5.5rem 0; }
+    }
+
+    @media (min-width: 1024px) {
+      .cards { grid-template-columns: repeat(6, 1fr); }
+      .card { grid-column: span 2; }
+      .cards .card:nth-child(4),
+      .cards .card:nth-child(5) { grid-column: span 3; }
+      .cards .card:nth-child(4) .card-visual,
+      .cards .card:nth-child(5) .card-visual { aspect-ratio: 2 / 1; }
+      .cards .card:nth-child(4) .card-visual img,
+      .cards .card:nth-child(5) .card-visual img { object-fit: contain; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const TELEGRAM_USERNAME = "username";
+    document.addEventListener("DOMContentLoaded", function () {
+      const href = "https://t.me/" + TELEGRAM_USERNAME;
+      document.querySelectorAll("[data-telegram]").forEach(function (el) {
+        el.setAttribute("href", href);
+      });
+    });
+  </script>
+
+  <header>
+    <div class="wrap header-inner">
+      <a class="logo" href="#top">
+        <strong>Борода</strong>
+        <span>Барбершоп · Москва</span>
+      </a>
+      <a class="btn" data-telegram href="https://t.me/username" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Центр Москвы · по записи</p>
+          <h1>Барбершоп «Борода» в Москве</h1>
+          <p class="lead">Стрижём, оформляем бороду, не торопимся.</p>
+          <div class="hero-actions">
+            <a class="btn" data-telegram href="https://t.me/username" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+            <a class="btn btn-ghost" href="#services">Смотреть услуги</a>
+          </div>
+        </div>
+        <div class="photo">
+          <img src="hero-salon.jpg" alt="Интерьер барбершопа «Борода»: кресла, зеркала и бетонные стены">
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Прайс</p>
+          <h2>Услуги</h2>
+          <p class="muted">Чёткие цены, без скрытых доплат. Запись — в Telegram.</p>
+        </div>
+        <ul class="cards">
+          <li class="card">
+            <div class="card-visual">
+              <img src="service-1.jpg" alt="Машинка и ножницы" loading="lazy">
+            </div>
+            <h3>Мужская стрижка</h3>
+            <p>Машинка и ножницы, мытьё головы и укладка.</p>
+            <div class="price">1500 ₽</div>
+          </li>
+          <li class="card">
+            <div class="card-visual">
+              <img src="service-2.jpg" alt="Борода и расчёска" loading="lazy">
+            </div>
+            <h3>Оформление бороды</h3>
+            <p>Форма, контур, уход маслом.</p>
+            <div class="price">1000 ₽</div>
+          </li>
+          <li class="card">
+            <div class="card-visual">
+              <img src="service-3.jpg" alt="Стрижка и борода: ножницы, машинка, расчёска" loading="lazy">
+            </div>
+            <h3>Комплекс «Стрижка + борода»</h3>
+            <p>Всё сразу, со скидкой.</p>
+            <div class="price">2200 ₽</div>
+          </li>
+          <li class="card">
+            <div class="card-visual">
+              <img src="service-4.jpg" alt="Детская стрижка" loading="lazy">
+            </div>
+            <h3>Детская стрижка (до 12 лет)</h3>
+            <p>Аккуратно и без слёз.</p>
+            <div class="price">1000 ₽</div>
+          </li>
+          <li class="card">
+            <div class="card-visual">
+              <img src="service-5.jpg" alt="Опасная бритва" loading="lazy">
+            </div>
+            <h3>Королевское бритьё</h3>
+            <p>Горячее полотенце и опасная бритва.</p>
+            <div class="price">1800 ₽</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="photo">
+          <img src="team.jpg" alt="Команда барбершопа «Борода»" loading="lazy" style="object-position: 50% 25%">
+        </div>
+        <div>
+          <p class="eyebrow">Студия</p>
+          <h2>О нас</h2>
+          <p>Мы небольшой барбершоп в центре Москвы. Работаем по записи, поэтому не заставляем вас ждать в очереди. Наша задача простая: чтобы вы вышли от нас в хорошем настроении и с нормальной стрижкой.</p>
+          <ul class="facts">
+            <li>Только по записи — без живой очереди</li>
+            <li>Мастера не торопят клиента</li>
+            <li>Центр Москвы, удобно заехать после работы</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Гости</p>
+          <h2>Отзывы</h2>
+          <p class="muted">Вымышленные примеры. Замените на настоящие после запуска.</p>
+        </div>
+        <ul class="quotes">
+          <li class="quote">
+            <p>«Пришёл с запущенной бородой, ушёл с нормальной. Мастер всё объяснил, как за ней ухаживать.»</p>
+            <cite>Алексей</cite>
+          </li>
+          <li class="quote">
+            <p>«Хожу сюда уже полгода. Всегда вовремя и без сюрпризов.»</p>
+            <cite>Дмитрий</cite>
+          </li>
+          <li class="quote">
+            <p>«Привёл сына на первую стрижку, он остался доволен. Спасибо!»</p>
+            <cite>Сергей</cite>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+      <div class="wrap contacts-grid">
+        <div class="contact-card">
+          <p class="eyebrow">Связь</p>
+          <h2>Контакты</h2>
+          <dl>
+            <dt>Адрес</dt>
+            <dd>Москва, ул. Примерная, д. 10 (замените на реальный адрес клиента)</dd>
+            <dt>Часы работы</dt>
+            <dd>Ежедневно с 10:00 до 21:00</dd>
+            <dt>Запись</dt>
+            <dd>Напишите нам в Telegram, ответим в течение 15 минут и подберём удобное время.</dd>
+          </dl>
+          <a class="btn" data-telegram href="https://t.me/username" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        </div>
+        <div class="photo">
+          <img src="facade.jpg" alt="Фасад барбершопа «Борода»" loading="lazy" style="object-position: 50% 30%">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Барбершоп «Борода» · Москва</span>
+      <span>© 2026 · Работаем по записи</span>
+    </div>
+  </footer>
+</body>
+</html>
